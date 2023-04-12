@@ -1,0 +1,29 @@
+{
+  "10001": [
+    {
+      "processor": "com.jianbogu.cosmos.application.operator.load.UserProfileOperator",
+      "timeout": 300
+    },
+    {
+      "type": "parallel",
+      "processors": [
+        {
+          "processor": "com.jianbogu.cosmos.application.operator.recall.C2IRecallOperator",
+          "timeout": 300
+        },
+        {
+          "processor": "com.jianbogu.cosmos.application.operator.recall.I2IRecallOperator",
+          "timeout": 300
+        },
+        {
+          "processor": "com.jianbogu.cosmos.application.operator.recall.U2IRecallOperator",
+          "timeout": 300
+        }
+      ]
+    },
+    {
+      "processor": "com.jianbogu.cosmos.application.operator.rank.RTPRankOperator",
+      "timeout": 300
+    }
+  ]
+}

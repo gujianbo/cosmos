@@ -1,0 +1,12 @@
+server:
+  port: 8081
+logging:
+  level:
+    com.jianbogu.cosmos: trace
+  file:
+    path: /Users/gujianbo/temp
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method:%L - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method:%L - %msg%n"
+scene:
+  file: config/scene.json
