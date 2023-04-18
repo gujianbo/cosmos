@@ -39,6 +39,13 @@ public class SearchRecService {
             pageIndex = Integer.valueOf(params.get("page_index"));
         }
         requestContext.setPageIndex(pageIndex);
+
+        String steamId = "0";
+        if(params.containsKey("steam_id")) {
+            steamId = params.get("steam_id");
+        }
+        requestContext.setStreamId(steamId);
+
         requestContext.setExtInfo(params);
         return requestContext;
     }

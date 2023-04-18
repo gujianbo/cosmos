@@ -35,8 +35,17 @@ public class RequestContext {
         this.pageIndex = pageIndex;
     }
 
+    public String getStreamId() {
+        return streamId;
+    }
+
+    public void setStreamId(String streamId) {
+        this.streamId = streamId;
+    }
+
     private int userId;
     private Map<String, String> extInfo;
     private int pageSize;
     private int pageIndex;
+    private String streamId;
 }
