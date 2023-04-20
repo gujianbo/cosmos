@@ -17,12 +17,16 @@ public abstract class FilterOperator extends BaseOperator {
         try {
             new_item = this.doFilter(context, items);
         } catch (Exception e){
-            logger.info(this.getClass().getName() + " throws exception:" + e.getMessage());
+            logger.info(this.getClass().getName() + " throws exception:" + e);
+            for(StackTraceElement stackTraceElement: e.getStackTrace()){
+                logger.info(stackTraceElement.toString());
+            }
             new_item = new ArrayList<>();
         }
         long endTime = System.currentTimeMillis();
         long TotalTime = endTime - startTime;
-        logger.info(this.getClass().getName() + " consume time:" + TotalTime + "ms");
+        logger.info(this.getClass().getName() + " consume time:" + TotalTime + "ms, get Results count:"
+                + (new_item==null?0:new_item.size()));
         return new_item;
     }
 

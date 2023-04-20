@@ -17,36 +17,12 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 public class SearchRecService {
-    Logger logger = LoggerFactory.getLogger(getClass());
+    protected Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     ScenePipeline scenePipeline;
     public RequestContext init(Map<String, String> params){
         RequestContext requestContext = new RequestContext();
-        int userId = 0;
-        if(params.containsKey("user_id")) {
-            userId = Integer.valueOf(params.get("user_id"));
-        }
-        requestContext.setUserId(userId);
-
-        int pageSize = 10;
-        if(params.containsKey("page_size")) {
-            pageSize = Integer.valueOf(params.get("page_size"));
-        }
-        requestContext.setPageSize(pageSize);
-
-        int pageIndex = 1;
-        if(params.containsKey("page_index")) {
-            pageIndex = Integer.valueOf(params.get("page_index"));
-        }
-        requestContext.setPageIndex(pageIndex);
-
-        String steamId = "0";
-        if(params.containsKey("steam_id")) {
-            steamId = params.get("steam_id");
-        }
-        requestContext.setStreamId(steamId);
-
-        requestContext.setExtInfo(params);
+        requestContext.setParams(params);
         return requestContext;
     }
 
@@ -100,6 +76,7 @@ public class SearchRecService {
     }
 
     public JSONObject run(String scene_id, Map<String, String> params){
+        logger.info("search rec service start!");
         RequestContext requestContext = init(params);
         JSONObject jsonObject = new JSONObject();
         if(scenePipeline.getScenePipeline(scene_id) == null) {

@@ -1,5 +1,11 @@
 server:
   port: 8081
+
+spring:
+  elasticsearch:
+    rest:
+      uris: 10.101.104.46:30010
+
 logging:
   level:
     com.jianbogu.cosmos: trace
@@ -8,5 +14,6 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method:%L - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %class.%method:%L - %msg%n"
+
 scene:
   file: config/scene.json

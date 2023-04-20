@@ -17,7 +17,10 @@ public abstract class LoadOperator extends BaseOperator{
         try {
             new_item = this.doLoad(context, items);
         } catch (Exception e){
-            logger.info(this.getClass().getName() + " throws exception:" + e.getMessage());
+            logger.info(this.getClass().getName() + " throws exception:" + e);
+            for(StackTraceElement stackTraceElement: e.getStackTrace()){
+                logger.info(stackTraceElement.toString());
+            }
             new_item = new ArrayList<>();
         }
         long endTime = System.currentTimeMillis();

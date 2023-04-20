@@ -25,5 +25,16 @@
       "processor": "com.jianbogu.cosmos.application.operator.rank.RTPRankOperator",
       "timeout": 300
     }
+  ],
+
+  "10002": [
+    {
+      "processor": "com.jianbogu.cosmos.application.operator.search.WOSSearchOperator",
+      "timeout": 300
+    },
+    {
+      "processor": "com.jianbogu.cosmos.application.operator.rank.WOSRankOperator",
+      "timeout": 300
+    }
   ]
 }

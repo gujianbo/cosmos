@@ -4,15 +4,15 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 public class BaseDTO {
     @JSONField(name = "id")
-    protected int id;
+    protected long id;
     @JSONField(name = "title")
     protected String title;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
