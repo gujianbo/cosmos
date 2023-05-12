@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="asserts/css/common.css" rel="stylesheet">
+    <link href="asserts/css/taobao.css" rel="stylesheet">
+    <link href="asserts/css/index.css" rel="stylesheet">
+    <script src="asserts/js/vue.global.js"></script>
+    <script src="asserts/js/axios.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="head">
+        <div class="logo_panel">
+            <img src="asserts/img/logo.png" class="logo">
+        </div>
+        <div class="search_panel">
+            <form action="#" class="search_form" @submit.prevent="handleSubmit">
+                <div class="input_panel">
+                    <input class="keywords_bar" v-model="keywords" maxlength="2048" size="50">
+                </div>
+                <button class="search_icon" type="submit">
+                    <span class="search_icon_inner"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="search_res">
+        <div class="search_item" :key="index" v-for="(item, index) in res_list">
+            <a class="search_title" v-html="item.title" v-bind:href="'/paper_detail/'+item.id"></a>
+            <div class="search_content">
+                <span class="search_abstract" v-html="item.abstract"></span>
+            </div>
+            <div class="search_ext">
+                <span class="search_author" v-html="item.authors"></span>
+            </div>
+        </div>
+        <div class="loading" v-if="loading_visible">
+            <img class="loading_img" src="asserts/img/loading.gif"/>
+        </div>
+        <div class="error_code" v-if="error_visible">
+            {{ error_msg }}
+        </div>
+    </div>
+    <div class="foot">
+        <div class="page_index">
+            <a class="page_tab" :key="index" v-for="(item, index) in page_indexs" href="#">
+                <span class="page_tab_span" v-html="item"></span>
+            </a>
+
+            <a class="page_tab_next" v-if="next_visible" href="#">
+                <span class="page_tab_span">下一页 ></span>
+            </a>
+        </div>
+    </div>
+</div>
+<script src="asserts/js/search.js"></script>
+</body>
+</html>

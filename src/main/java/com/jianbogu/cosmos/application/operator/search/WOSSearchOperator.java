@@ -10,6 +10,8 @@ import com.jianbogu.cosmos.core.operator.RecallOperator;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.elasticsearch.search.SearchHit;
@@ -36,9 +38,20 @@ public class WOSSearchOperator extends RecallOperator {
         WOSRequestContext wosRequestContext = (WOSRequestContext)context;
         SearchSourceBuilder builder = new SearchSourceBuilder();
         QueryStringQueryBuilder queryString = QueryBuilders.queryStringQuery(wosRequestContext.getQuery());
+        queryString.field("title", 1.0f);
+        queryString.field("abstract", 0.5f);
+        queryString.field("authors", 0.5f);
+        queryString.field("categories", 0.5f);
+//        BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+//
+//        QueryBuilder excludeIdBuilder =
+//        boolQueryBuilder.mustNot();
+
         HighlightBuilder highlightBuilder = new HighlightBuilder();
         highlightBuilder.field("title");
         builder.query(queryString);
+
+
         builder.highlighter(highlightBuilder);
         builder.from(0);
         builder.size(wosRequestContext.getPageSize());
@@ -46,11 +59,14 @@ public class WOSSearchOperator extends RecallOperator {
         SearchRequest searchRequest = new SearchRequest("doc");
         searchRequest.source(builder);
         logger.info("ES Query：" + builder.toString());
-        logger.info("restHighLevelClient is null：" + (restHighLevelClient==null));
         SearchResponse searchResponse = null;
 
         try {
+            long startTime = System.currentTimeMillis();
             searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+            long endTime = System.currentTimeMillis();
+            long TotalTime = endTime - startTime;
+            logger.info("ES query consume time:" + TotalTime + "ms");
         }catch (IOException e) {
             logger.info(e.toString());
             return new ArrayList<>();
@@ -85,10 +101,8 @@ public class WOSSearchOperator extends RecallOperator {
             wosdto.setScore(score);
 
             HighlightField titleHighLight = hit.getHighlightFields().get("title");
-            if(titleHighLight != null) {
-                for (Text fragment : titleHighLight.getFragments()) {
-                    wosdto.setHighlightTitle(fragment.string());
-                }
+            if(titleHighLight != null && titleHighLight.getFragments().length > 0) {
+                wosdto.setHighlightTitle(titleHighLight.getFragments()[0].string());
             }else{
                 wosdto.setHighlightTitle(wosdto.getTitle());
             }

@@ -1,0 +1,76 @@
+.clear
+{
+	clear:both;
+}
+body{
+	/*background-color: #B39272;*/
+}
+
+.head{
+	margin: 0 auto;
+	padding: 10px 0px;
+	/*background-color: #889A90;*/
+	/*border-bottom: 5px solid #FAC8A3;*/
+}
+
+.logo_panel{
+
+}
+
+.logo{
+	margin: 0 auto;
+	width: 404px;
+	display: block;
+}
+
+.search_panel{
+	margin: 20px auto;
+	max-width: 540px;
+}
+
+.input_panel{
+
+}
+
+.search_form{
+	padding-right: 39px;
+	position: relative;
+}
+
+input.keywords_bar{
+	height: 38px;
+	border-radius: 5px 0 0 5px;
+	border: 1px solid #595959;
+	padding: 3px 6px 1px 8px;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+input.keywords_bar:focus {
+	border-color: #4d90fe;
+	border-radius: 5px 0 0 5px;
+}
+
+.search_icon{
+	width: 40px;
+	height: 38px;
+	border-radius: 0 5px 5px 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #4d90fe;
+	border: 1px solid rgba(0,0,0,.1);
+	cursor: pointer;
+}
+
+.search_icon_inner{
+	vertical-align: middle;
+	width: 21px;
+	height: 21px;
+	background: url("../img/google_icon.png") no-repeat;
+	background-position: -92px -253px;
+	background-size: 169px;
+	display: inline-block;
+
+}

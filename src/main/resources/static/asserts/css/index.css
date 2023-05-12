@@ -1,0 +1,81 @@
+
+.search_res{
+    width: 950px;
+    margin: 0 auto;
+}
+
+.search_item{
+    margin-bottom: 20px;
+}
+
+.loading{
+    text-align: center;
+}
+
+.loading_img{
+    margin: 0 auto;
+    width: 95px;
+    height: 70px;
+}
+
+a.search_title{
+    color: #2440b3;
+    font-size: 18px;
+    line-height: 22px;
+}
+a.search_title em{
+    color: #ff0000;
+}
+.search_abstract{
+    font-size: 13px;
+    line-height: 21px;
+}
+
+.search_author{
+    color: #626675;
+    font-size: 13px;
+    line-height: 21px;
+}
+
+.foot{
+    background-color: #F5F5F6;
+    padding: 30px;
+}
+.page_index{
+    width: 950px;
+    margin: 0 auto;
+}
+a.page_tab {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #3951b3;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+}
+a.page_tab_next{
+    width: 80px;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #3951b3;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+}
+.page_tab_span {
+    border: none;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+}

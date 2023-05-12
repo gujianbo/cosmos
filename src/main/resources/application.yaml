@@ -5,6 +5,8 @@ spring:
   elasticsearch:
     rest:
       uris: 10.101.104.46:30010
+  thymeleaf:
+    cache: false
 
 logging:
   level:
