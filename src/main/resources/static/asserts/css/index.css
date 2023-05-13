@@ -58,6 +58,7 @@ a.page_tab {
     text-align: center;
     text-decoration: none;
     overflow: hidden;
+    cursor: pointer;
 }
 a.page_tab_next{
     width: 80px;
@@ -72,6 +73,7 @@ a.page_tab_next{
     text-align: center;
     text-decoration: none;
     overflow: hidden;
+    cursor: pointer;
 }
 .page_tab_span {
     border: none;

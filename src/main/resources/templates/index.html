@@ -45,12 +45,8 @@
     </div>
     <div class="foot">
         <div class="page_index">
-            <a class="page_tab" :key="index" v-for="(item, index) in page_indexs" href="#">
-                <span class="page_tab_span" v-html="item"></span>
-            </a>
-
-            <a class="page_tab_next" v-if="next_visible" href="#">
-                <span class="page_tab_span">下一页 ></span>
+            <a class="page_tab_next" v-if="next_visible" href="#" @click.prevent="getNextPage">
+                <span class="page_tab_span">加载更多</span>
             </a>
         </div>
     </div>
